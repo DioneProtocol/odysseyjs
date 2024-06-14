@@ -279,7 +279,7 @@ export class Defaults {
     5: {
       hrp: NetworkIDToHRP[5],
       A: n5A,
-      "Tv3yjrRiBDoyarcwXtezFEHaGKumWBPC5KAD3f4YEx4thhXwo": n5A,
+      Tv3yjrRiBDoyarcwXtezFEHaGKumWBPC5KAD3f4YEx4thhXwo: n5A,
       O: n5O,
       "11111111111111111111111111111111LpoYY": n5O,
       D: n5D,
