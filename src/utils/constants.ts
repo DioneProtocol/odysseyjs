@@ -152,8 +152,8 @@ const n1A: A = {
   vm: AChainVMName,
   txFee: ONEDIONE.mul(new BN(5)),
   creationTxFee: ONEDIONE.mul(new BN(10)),
-  mintTxFee: ONEDIONE.mul(new BN(5)),
-};
+  mintTxFee: ONEDIONE.mul(new BN(5))
+}
 
 const n1O: O = {
   blockchainID: OmegaChainID,
@@ -170,8 +170,8 @@ const n1O: O = {
   maxSupply: new BN(720000000).mul(ONEDIONE),
   minStake: ONEDIONE.mul(new BN(500000)),
   minStakeDuration: 365 * 24 * 60 * 60,
-  maxStakeDuration: 6 * 365 * 24 * 60 * 60,
-};
+  maxStakeDuration: 6 * 365 * 24 * 60 * 60
+}
 
 const n1D: D = {
   blockchainID: "2McYdwGECu9pD2EarknHrFKTVVHefjxH9UPKJTgMHCYRGuD5Vo",
@@ -192,15 +192,15 @@ const n1D: D = {
 // End Mainnet
 
 // Start Testnet
-dioneAssetID = "2fZZYVKV6SiKgPFj6GpPMVFNeGFwp7cdb1W1hbw2sBUpQX1tMG"
+dioneAssetID = "2NXDF6rpi7fJqFnuSKSnoVCNF3Py22xdjQavy9QgvjL3zr2yue"
 const n5A: A = {
-  blockchainID: "Tv3yjrRiBDoyarcwXtezFEHaGKumWBPC5KAD3f4YEx4thhXwo",
+  blockchainID: "3wRxPEwJZTqP38NFkKHU1pWriDcePzEvj8PAtHikzmMpwAXML",
   dioneAssetID: dioneAssetID,
   alias: AChainAlias,
   vm: AChainVMName,
-  txFee: MILLIDIONE.mul(new BN(50)),
-  creationTxFee: MILLIDIONE.mul(new BN(100)),
-  mintTxFee: MILLIDIONE.mul(new BN(50))
+  txFee: ONEDIONE.mul(new BN(5)),
+  creationTxFee: ONEDIONE.mul(new BN(10)),
+  mintTxFee: ONEDIONE.mul(new BN(5))
 }
 
 const n5O: O = {
@@ -208,9 +208,9 @@ const n5O: O = {
   dioneAssetID: dioneAssetID,
   alias: OChainAlias,
   vm: OChainVMName,
-  txFee: MILLIDIONE.mul(new BN(50)),
-  creationTxFee: MILLIDIONE.mul(new BN(100)),
-  createSubnetTx: ONEDIONE,
+  txFee: ONEDIONE.mul(new BN(5)),
+  creationTxFee: ONEDIONE.mul(new BN(10)),
+  createSubnetTx: ONEDIONE.mul(new BN(300)),
   createChainTx: new BN(10).mul(ONEDIONE),
   minConsumption: 0.1,
   maxConsumption: 0.12,
@@ -222,7 +222,7 @@ const n5O: O = {
 }
 
 const n5D: D = {
-  blockchainID: "2PQemmQmJ8UDGfsznCnsDrBfYRnZxMqrU1tgvS8uWbukLV2bGa",
+  blockchainID: "L1m631VHS1yuYkicaNRQTzzbE71dG942sgF3sCnHFgCTzNmsD",
   alias: DChainAlias,
   vm: DChainVMName,
   txBytesGas: 1,
@@ -235,8 +235,8 @@ const n5D: D = {
   gasPrice: new BN("238095238095238"),
   minGasPrice: new BN("238095238095238"),
   maxGasPrice: new BN("714285714285714"),
-  chainID: 131313,
-};
+  chainID: 131313
+}
 // End Testnet
 
 // Start custom network
@@ -279,11 +279,11 @@ export class Defaults {
     5: {
       hrp: NetworkIDToHRP[5],
       A: n5A,
-      Tv3yjrRiBDoyarcwXtezFEHaGKumWBPC5KAD3f4YEx4thhXwo: n5A,
+      "3wRxPEwJZTqP38NFkKHU1pWriDcePzEvj8PAtHikzmMpwAXML": n5A,
       O: n5O,
       "11111111111111111111111111111111LpoYY": n5O,
       D: n5D,
-      "2PQemmQmJ8UDGfsznCnsDrBfYRnZxMqrU1tgvS8uWbukLV2bGa": n5D
+      L1m631VHS1yuYkicaNRQTzzbE71dG942sgF3sCnHFgCTzNmsD: n5D
     },
     1337: {
       hrp: NetworkIDToHRP[1337],
