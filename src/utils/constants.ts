@@ -144,9 +144,9 @@ export const DIONEGWEI: BN = NANODIONE.clone()
 export const DIONESTAKECAP: BN = ONEDIONE.mul(new BN(3000000))
 
 // Start mainnet
-let dioneAssetID: string = "2stVkeTWFcqFjnNsHEZV94qeAJJ8qvDC9mkDBktCAaQT3USGg8"
+let dioneAssetID: string = "D8mxfovjYSN6XMbpWxaRk6xqdFHCQcxwzvGP9tmTx2AsiPFUc"
 const n1A: A = {
-  blockchainID: "bLBLyWNb8USCGW2cPZcGfe4Ahe3nTfKMGxNor64oo7vTHCi8r",
+  blockchainID: "2YjjguzbzbhbpQYUioAcNmw5xbmiHKrae8S2HWVKLH6Ce7DiD6",
   dioneAssetID: dioneAssetID,
   alias: AChainAlias,
   vm: AChainVMName,
@@ -174,19 +174,19 @@ const n1O: O = {
 }
 
 const n1D: D = {
-  blockchainID: "2McYdwGECu9pD2EarknHrFKTVVHefjxH9UPKJTgMHCYRGuD5Vo",
+  blockchainID: "faqcDVftkSVcZ2nESGxGKKZbNALcaU5AUc15SwwaiTkAgy3KK",
   alias: DChainAlias,
   vm: DChainVMName,
   txBytesGas: 1,
   costPerSignature: 1000,
   // DEPRECATED - txFee
   // WILL BE REMOVED IN NEXT MAJOR VERSION BUMP
-  txFee: ONEDIONE.mul(new BN(50)),
+  txFee: ONEDIONE.mul(new BN(5)),
   // DEPRECATED - gasPrice
   // WILL BE REMOVED IN NEXT MAJOR VERSION BUMP
-  gasPrice: new BN("2380952380952381"),
-  minGasPrice: new BN("2380952380952381"),
-  maxGasPrice: new BN("7142857142857143"),
+  gasPrice: new BN("238095238095238"),
+  minGasPrice: new BN("238095238095238"),
+  maxGasPrice: new BN("714285714285714"),
   chainID: 153153
 }
 // End Mainnet
@@ -270,11 +270,11 @@ export class Defaults {
     1: {
       hrp: NetworkIDToHRP[1],
       A: n1A,
-      Tv3yjrRiBDoyarcwXtezFEHaGKumWBPC5KAD3f4YEx4thhXwo: n1A,
+      "2YjjguzbzbhbpQYUioAcNmw5xbmiHKrae8S2HWVKLH6Ce7DiD6": n1A,
       O: n1O,
       "11111111111111111111111111111111LpoYY": n1O,
       D: n1D,
-      "2McYdwGECu9pD2EarknHrFKTVVHefjxH9UPKJTgMHCYRGuD5Vo": n1D
+      faqcDVftkSVcZ2nESGxGKKZbNALcaU5AUc15SwwaiTkAgy3KK: n1D
     },
     5: {
       hrp: NetworkIDToHRP[5],
