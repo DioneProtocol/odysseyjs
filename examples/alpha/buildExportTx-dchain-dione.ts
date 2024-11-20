@@ -13,7 +13,6 @@ import {
 } from "../../src/apis/alpha/interfaces"
 import { KeyChain as DELTAKeyChain, DELTAAPI } from "../../src/apis/delta"
 import {
-  PrivateKeyPrefix,
   DefaultLocalGenesisPrivateKey,
   Defaults,
   UnixNow

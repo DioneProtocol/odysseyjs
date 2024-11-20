@@ -8,7 +8,6 @@ import {
   Tx
 } from "../../src/apis/omegavm"
 import {
-  PrivateKeyPrefix,
   DefaultLocalGenesisPrivateKey,
   Defaults,
   UnixNow

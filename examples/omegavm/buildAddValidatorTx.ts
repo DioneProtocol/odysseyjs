@@ -8,22 +8,18 @@ import {
   Tx
 } from "../../src/apis/omegavm"
 import {
-  PrivateKeyPrefix,
   DefaultLocalGenesisPrivateKey,
   UnixNow
 } from "../../src/utils"
 
-// const ip = "localhost"
-// const port = Number("9650")
-const ip = "testnode.dioneprotocol.com"
-const port = undefined
-const protocol = "https"
-const networkID = Number("5")
+const ip = process.env.IP
+const port = Number(process.env.PORT)
+const protocol = process.env.PROTOCOL
+const networkID = Number(process.env.NETWORK_ID)
 const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const ochain: OmegaVMAPI = odyssey.OChain()
 const oKeychain: KeyChain = ochain.keyChain()
-const key = ""
-const privKey: Buffer = new Buffer(key, "hex")
+const privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
 oKeychain.importKey(privKey)
 const oAddressStrings: string[] = ochain.keyChain().getAddressStrings()
 const threshold: number = 1
@@ -36,7 +32,6 @@ const reward = "O-dione18jma8ppw3nhx5r4ap8clazz0dps7rv5ulw7llh"
 const nodeID: string = "NodeID-DE8BWpgUtNkTXzjFArzS1nroouzBcXX8J"
 
 const asOf: BN = UnixNow()
-const nodeID: string = "NodeID-2nA8Ggj4FaSpqKBFdQrTcuM2LSCZM7KU9"
 const startTime: BN = UnixNow().add(new BN(60 * 1))
 const endTime: BN = startTime.add(new BN(60 * 60 * 24))
 const delegationFee: number = 10

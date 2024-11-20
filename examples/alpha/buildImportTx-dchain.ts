@@ -9,7 +9,6 @@ import {
 } from "../../src/apis/alpha"
 import { GetUTXOsResponse } from "../../src/apis/alpha/interfaces"
 import {
-  PrivateKeyPrefix,
   DefaultLocalGenesisPrivateKey,
   Defaults,
   UnixNow

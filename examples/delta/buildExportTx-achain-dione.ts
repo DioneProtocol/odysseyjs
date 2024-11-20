@@ -9,7 +9,6 @@ import {
   Tx
 } from "../../src/apis/delta"
 import {
-  PrivateKeyPrefix,
   DefaultLocalGenesisPrivateKey,
   Defaults,
   costExportTx
@@ -22,7 +21,7 @@ const networkID = Number(process.env.NETWORK_ID)
 const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const achain: ALPHAAPI = odyssey.AChain()
 const dchain: DELTAAPI = odyssey.DChain()
-const privKey: string = `${PrivateKeyPrefix}${DefaultLocalGenesisPrivateKey}`
+const privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
 const aKeychain: ALPHAKeyChain = achain.keyChain()
 const dKeychain: DELTAKeyChain = dchain.keyChain()
 aKeychain.importKey(privKey)

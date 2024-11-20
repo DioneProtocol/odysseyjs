@@ -13,7 +13,6 @@ import {
 } from "../../src/apis/alpha/interfaces"
 import { KeyChain as OmegaVMKeyChain, OmegaVMAPI } from "../../src/apis/omegavm"
 import {
-  PrivateKeyPrefix,
   DefaultLocalGenesisPrivateKey,
   Defaults,
   UnixNow

@@ -1,9 +1,8 @@
 import "dotenv/config"
-import { Odyssey } from "../../src"
+import { Odyssey, Buffer } from "../../src"
 import { OmegaVMAPI, KeyChain } from "../../src/apis/omegavm"
 import { GetStakeResponse } from "../../src/apis/omegavm/interfaces"
 import {
-  PrivateKeyPrefix,
   DefaultLocalGenesisPrivateKey
 } from "../../src/utils"
 
@@ -14,7 +13,7 @@ const networkID = Number(process.env.NETWORK_ID)
 const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const ochain: OmegaVMAPI = odyssey.OChain()
 const oKeychain: KeyChain = ochain.keyChain()
-const privKey: string = `${PrivateKeyPrefix}${DefaultLocalGenesisPrivateKey}`
+const privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
 oKeychain.importKey(privKey)
 const oAddressStrings: string[] = ochain.keyChain().getAddressStrings()
 const encoding: string = "hex"

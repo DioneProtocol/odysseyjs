@@ -7,7 +7,6 @@ import BN from "bn.js"
 import { Buffer } from "buffer/"
 import BinTools from "../utils/bintools"
 
-export const PrivateKeyPrefix: string = "PrivateKey-"
 export const NodeIDPrefix: string = "NodeID-"
 export const PrimaryAssetAlias: string = "DIONE"
 export const MainnetAPI: string = "api.dione.network"

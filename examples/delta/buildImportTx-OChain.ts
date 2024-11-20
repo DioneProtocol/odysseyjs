@@ -9,7 +9,6 @@ import {
   UTXOSet
 } from "../../src/apis/delta"
 import {
-  PrivateKeyPrefix,
   DefaultLocalGenesisPrivateKey,
   Defaults,
   costImportTx
@@ -24,7 +23,7 @@ const ochain: OmegaVMAPI = odyssey.OChain()
 const dchain: DELTAAPI = odyssey.DChain()
 const oKeychain: OmegaVMKeyChain = ochain.keyChain()
 const dHexAddress: string = "0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC"
-const privKey: string = `${PrivateKeyPrefix}${DefaultLocalGenesisPrivateKey}`
+const privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
 const dKeychain: DELTAKeyChain = dchain.keyChain()
 oKeychain.importKey(privKey)
 dKeychain.importKey(privKey)

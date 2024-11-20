@@ -8,7 +8,6 @@ import {
   Tx
 } from "../../src/apis/omegavm"
 import {
-  PrivateKeyPrefix,
   DefaultLocalGenesisPrivateKey,
   UnixNow
 } from "../../src/utils"
@@ -26,23 +25,19 @@ const ochain: OmegaVMAPI = odyssey.OChain()
 // Keychain with 4 keys-A, B, D, and D
 const oKeychain: KeyChain = ochain.keyChain()
 // Keypair A
-let privKey: string = `${PrivateKeyPrefix}${DefaultLocalGenesisPrivateKey}`
-// O-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p
+let privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
 oKeychain.importKey(privKey)
 
 // Keypair B
-privKey = "PrivateKey-R6e8f5QSa89DjpvL9asNdhdJ4u8VqzMJStPV8VVdDmLgPd8a4"
-// O-custom15s7p7mkdev0uajrd0pzxh88kr8ryccztnlmzvj
+privKey = new Buffer("ab8523913b9963530eb05584dfe85fb63c2516a2b5b7c3aec9d000d716fb1534", "hex")
+oKeychain.importKey(privKey)
+
+// Keypair C
+privKey = new Buffer("df3eb4d997116f9059dcac0a919431e5f38679f1953cb070516aece6f055034a", "hex")
 oKeychain.importKey(privKey)
 
 // Keypair D
-privKey = "PrivateKey-24gdABgapjnsJfnYkfev6YPyQhTaCU72T9bavtDNTYivBLp2eW"
-// O-custom1u6eth2fg33ye63mnyu5jswtj326jaypvhyar45
-oKeychain.importKey(privKey)
-
-// Keypair D
-privKey = "PrivateKey-2uWuEQbY5t7NPzgqzDrXSgGPhi3uyKj2FeAvPUHYo6CmENHJfn"
-// O-custom1t3qjau2pf3ys83yallqt4y5xc3l6ya5f7wr6aq
+privKey = new Buffer("fbb5cb9faccdaee01a44495be987eecbce6a62bd2342686940d2272399240b94", "hex")
 oKeychain.importKey(privKey)
 const oAddressStrings: string[] = ochain.keyChain().getAddressStrings()
 const oAddresses: Buffer[] = ochain.keyChain().getAddresses()

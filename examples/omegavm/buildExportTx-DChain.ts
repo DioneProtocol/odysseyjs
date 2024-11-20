@@ -9,7 +9,6 @@ import {
   Tx
 } from "../../src/apis/omegavm"
 import {
-  PrivateKeyPrefix,
   DefaultLocalGenesisPrivateKey,
   Defaults,
   UnixNow
@@ -24,7 +23,7 @@ const achain: ALPHAAPI = odyssey.AChain()
 const ochain: OmegaVMAPI = odyssey.OChain()
 const aKeychain: ALPHAKeyChain = achain.keyChain()
 const oKeychain: KeyChain = ochain.keyChain()
-const privKey: string = `${PrivateKeyPrefix}${DefaultLocalGenesisPrivateKey}`
+const privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
 aKeychain.importKey(privKey)
 oKeychain.importKey(privKey)
 const aAddressStrings: string[] = achain.keyChain().getAddressStrings()

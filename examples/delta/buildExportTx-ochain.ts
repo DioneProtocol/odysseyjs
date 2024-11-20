@@ -11,16 +11,15 @@ import {
   Tx
 } from "../../src/apis/delta"
 import {
-  PrivateKeyPrefix,
   DefaultLocalGenesisPrivateKey,
   Defaults,
   costExportTx
 } from "../../src/utils"
 
-const ip = "testnode.dioneprotocol.com"
-const port = undefined
-const protocol = "https"
-const networkID = Number("5")
+const ip = process.env.IP
+const port = Number(process.env.PORT)
+const protocol = process.env.PROTOCOL
+const networkID = Number(process.env.NETWORK_ID)
 const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const ochain: OmegaVMAPI = odyssey.OChain()
 const dchain: DELTAAPI = odyssey.DChain()

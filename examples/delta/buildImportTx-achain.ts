@@ -9,7 +9,6 @@ import {
   UTXOSet
 } from "../../src/apis/delta"
 import {
-  PrivateKeyPrefix,
   DefaultLocalGenesisPrivateKey,
   Defaults,
   costImportTx
