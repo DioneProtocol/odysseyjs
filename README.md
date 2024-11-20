@@ -164,16 +164,10 @@ const newAddress1 = myKeychain.makeKey() // returns an instance of the KeyPair c
 You may also import your existing private key into the KeyChain using either a Buffer...
 
 ```js
-const mypk = bintools.cb58Decode(
-  "JaCCSxdoWfo3ao5KwenXrJjJR7cBTQ287G1C5qpv2hr2tCCdb"
-) // returns a Buffer
-const newAddress2 = myKeychain.importKey(mypk) // returns an instance of the KeyPair class
-```
-
-... or an CB58 string works, too:
-
-```js
-const mypk = "PrivateKey-JaCCSxdoWfo3ao5KwenXrJjJR7cBTQ287G1C5qpv2hr2tCCdb"
+const mypk = new Buffer(
+  "ab8523913b9963530eb05584dfe85fb63c2516a2b5b7c3aec9d000d716fb1534",
+  "hex"
+  ) // returns a Buffer
 const newAddress2 = myKeychain.importKey(mypk) // returns an instance of the KeyPair class
 ```
 
@@ -204,8 +198,9 @@ const privkstr = keypair.getPrivateKeyString() //returns a CB58 encoded string
 
 keypair.generateKey() // creates a new random KeyPair
 
-const mypk = bintools.cb58Decode(
-  "24jUJ9vZexUM6expyMcT48LBx27k1m7xpraoV62oSQAHdziao5"
+const mypk = new Buffer(
+  "ab8523913b9963530eb05584dfe85fb63c2516a2b5b7c3aec9d000d716fb1534",
+  "hex"
 )
 const successful = keypair.importKey(mypk) // returns boolean if private key imported successfully
 
