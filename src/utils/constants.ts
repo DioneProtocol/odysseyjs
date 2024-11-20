@@ -49,6 +49,7 @@ export interface O {
   maxStakingDuration: BN
   maxSupply: BN
   minStake: BN
+  minDelegationStake: BN
   minStakeDuration: number
   maxStakeDuration: number
   dioneAssetID?: string
@@ -169,6 +170,7 @@ const n1O: O = {
   maxStakingDuration: new BN(31536000),
   maxSupply: new BN(720000000).mul(ONEDIONE),
   minStake: ONEDIONE.mul(new BN(500000)),
+  minDelegationStake: ONEDIONE.mul(new BN(500)),
   minStakeDuration: 365 * 24 * 60 * 60,
   maxStakeDuration: 6 * 365 * 24 * 60 * 60
 }
@@ -217,6 +219,7 @@ const n5O: O = {
   maxStakingDuration: new BN(31536000),
   maxSupply: new BN(720000000).mul(ONEDIONE),
   minStake: ONEDIONE,
+  minDelegationStake: ONEDIONE,
   minStakeDuration: 24 * 60 * 60, //one day
   maxStakeDuration: 365 * 24 * 60 * 60 // one year
 }

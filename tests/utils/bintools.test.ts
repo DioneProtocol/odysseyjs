@@ -328,17 +328,9 @@ describe("BinTools", (): void => {
       bintools.stringToAddress(address)
     })
     addrs = [
-      "A-fuji1dcfyuug87xqayl4fpp02z9dvknwhafds7d29h6",
-      "A-fuji1ltghj033re64920k786uprcp82p9e36jtkmpm3",
-      "A-fuji1dq4q9seql2spxrkd7rl82uck5ej3nvlhk79w6t"
-    ]
-    addrs.forEach((address: string): void => {
-      bintools.stringToAddress(address)
-    })
-    addrs = [
-      "A-dione1dcfyuug87xqayl4fpp02z9dvknwhafdsjlw6m9",
-      "A-dione1ltghj033re64920k786uprcp82p9e36j8yl7hw",
-      "A-dione1dq4q9seql2spxrkd7rl82uck5ej3nvlh6vp3k5"
+      "A-dione1r476vw5wm7zrqc2ewetqrztzpvjsncqxu3c5zu",
+      "A-dione1zgjm3xv0qy62tevqztz86qyz78q7cl0equxcra",
+      "A-dione1qyk45qgud6xwlsawcxh92pvc39fqfttc4q4end"
     ]
     addrs.forEach((address: string): void => {
       bintools.stringToAddress(address)
@@ -352,17 +344,9 @@ describe("BinTools", (): void => {
       bintools.stringToAddress(address)
     })
     addrs = [
-      "O-fuji1dcfyuug87xqayl4fpp02z9dvknwhafds7d29h6",
-      "O-fuji1ltghj033re64920k786uprcp82p9e36jtkmpm3",
-      "O-fuji1dq4q9seql2spxrkd7rl82uck5ej3nvlhk79w6t"
-    ]
-    addrs.forEach((address: string): void => {
-      bintools.stringToAddress(address)
-    })
-    addrs = [
-      "O-dione1dcfyuug87xqayl4fpp02z9dvknwhafdsjlw6m9",
-      "O-dione1ltghj033re64920k786uprcp82p9e36j8yl7hw",
-      "O-dione1dq4q9seql2spxrkd7rl82uck5ej3nvlh6vp3k5"
+      "O-dione1r476vw5wm7zrqc2ewetqrztzpvjsncqxu3c5zu",
+      "O-dione1zgjm3xv0qy62tevqztz86qyz78q7cl0equxcra",
+      "O-dione1qyk45qgud6xwlsawcxh92pvc39fqfttc4q4end"
     ]
     addrs.forEach((address: string): void => {
       bintools.stringToAddress(address)
@@ -378,18 +362,9 @@ describe("BinTools", (): void => {
     })
 
     addrs = [
-      "D-fuji1dcfyuug87xqayl4fpp02z9dvknwhafds7d29h6",
-      "D-fuji1ltghj033re64920k786uprcp82p9e36jtkmpm3",
-      "D-fuji1dq4q9seql2spxrkd7rl82uck5ej3nvlhk79w6t"
-    ]
-    addrs.forEach((address: string): void => {
-      bintools.stringToAddress(address)
-    })
-
-    addrs = [
-      "D-dione1dcfyuug87xqayl4fpp02z9dvknwhafdsjlw6m9",
-      "D-dione1ltghj033re64920k786uprcp82p9e36j8yl7hw",
-      "D-dione1dq4q9seql2spxrkd7rl82uck5ej3nvlh6vp3k5"
+      "D-dione1r476vw5wm7zrqc2ewetqrztzpvjsncqxu3c5zu",
+      "D-dione1zgjm3xv0qy62tevqztz86qyz78q7cl0equxcra",
+      "D-dione1qyk45qgud6xwlsawcxh92pvc39fqfttc4q4end"
     ]
     addrs.forEach((address: string): void => {
       bintools.stringToAddress(address)

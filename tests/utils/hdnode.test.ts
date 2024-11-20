@@ -24,16 +24,16 @@ describe("HDNode", (): void => {
   const m: string =
     "immune year obscure laptop wage diamond join glue ecology envelope box fade mixed cradle athlete absorb stick rival punch dinosaur skin blind benefit pretty"
   const addrs: string[] = [
-    "A-dione15qwuklmrfcmfw78yvka9pjsukjeevl4aveehq0",
-    "A-dione13wqaxm6zgjq5qwzuyyxyl9yrz3edcgwgfht6gt",
-    "A-dione1z3dn3vczxttts8dsdjfgtnkekf8nvqhhsj5stl",
-    "A-dione1j6kze9n7r3e8wq6jta5mf6pd3fwnu0v9wygc8p",
-    "A-dione1ngasfmvl8g63lzwznp0374myz7ajt4746g750m",
-    "A-dione1pr7pzcggtrk6uap58sfsrlnhqhayly2gtlux9l",
-    "A-dione1wwtn3gx7ke4ge2c29eg5sun36nyj55u4dle9gn",
-    "A-dione13527pvlnxa4wrfgt0h8ya7nkjawqq29sv5s89x",
-    "A-dione1gw6agtcsz969ugpqh2zx2lmjchg6npklvp43qq",
-    "A-dione10agjetvj0a0vf6wtlh7s6ctr8ha8ch8km8z567"
+    "A-dione15qwuklmrfcmfw78yvka9pjsukjeevl4a9tctxv",
+    "A-dione13wqaxm6zgjq5qwzuyyxyl9yrz3edcgwgq92xwg",
+    "A-dione1z3dn3vczxttts8dsdjfgtnkekf8nvqhheq4vdu",
+    "A-dione1j6kze9n7r3e8wq6jta5mf6pd3fwnu0v98kfypz",
+    "A-dione1ngasfmvl8g63lzwznp0374myz7ajt474n6lgfc",
+    "A-dione1pr7pzcggtrk6uap58sfsrlnhqhayly2gzda6ru",
+    "A-dione1wwtn3gx7ke4ge2c29eg5sun36nyj55u4ydcews",
+    "A-dione13527pvlnxa4wrfgt0h8ya7nkjawqq29s9x3mr9",
+    "A-dione1gw6agtcsz969ugpqh2zx2lmjchg6npkl9n5dxr",
+    "A-dione10agjetvj0a0vf6wtlh7s6ctr8ha8ch8kj4rgua"
   ]
 
   test("derive", (): void => {

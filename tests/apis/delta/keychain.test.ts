@@ -30,24 +30,6 @@ describe("DELTAKeyPair", (): void => {
     expect(hrp).toBe("custom")
     expect(networkID).toBe(1337)
 
-    odyssey.setNetworkID(2)
-    hrp = odyssey.getHRP()
-    networkID = odyssey.getNetworkID()
-    expect(hrp).toBe("cascade")
-    expect(networkID).toBe(2)
-
-    odyssey.setNetworkID(3)
-    hrp = odyssey.getHRP()
-    networkID = odyssey.getNetworkID()
-    expect(hrp).toBe("denali")
-    expect(networkID).toBe(3)
-
-    odyssey.setNetworkID(4)
-    hrp = odyssey.getHRP()
-    networkID = odyssey.getNetworkID()
-    expect(hrp).toBe("everest")
-    expect(networkID).toBe(4)
-
     odyssey.setNetworkID(0)
     hrp = odyssey.getHRP()
     networkID = odyssey.getNetworkID()

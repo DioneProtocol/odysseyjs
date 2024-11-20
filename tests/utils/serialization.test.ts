@@ -41,7 +41,7 @@ import { getPreferredHRP } from "../../src/utils"
 const serialization: Serialization = Serialization.getInstance()
 
 describe("Serialization", (): void => {
-  const address: string = "A-dione1wst8jt3z3fm9ce0z6akj3266zmgccdp03hjlaj"
+  const address: string = "A-dione1r476vw5wm7zrqc2ewetqrztzpvjsncqxu3c5zu"
   const nodeID: string = "NodeID-MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"
   const privateKey: string =
     "PrivateKey-ewoqjP7PxY4yr3iLTpLisriqt94hdyDFNgchSxGGztUrTXtNN"
@@ -328,8 +328,8 @@ describe("Serialization", (): void => {
     const amount: BN = new BN(0)
     const amountHex: string = "0000000000000000"
     const bytes: string = "0000000000000000000000000000000000000000"
-    const xAddress: string = "A-dione1pdurs53v6vtue9sw7am9ayjqh9mcnqe9s80sgn"
-    const xAddressHex: string = "0b7838522cd317cc960ef7765e9240b977898325"
+    const xAddress: string = "A-dione1r476vw5wm7zrqc2ewetqrztzpvjsncqxu3c5zu"
+    const xAddressHex: string = "1d7da63a8edf8430615976560189620b2509e006"
     const address: string = "A-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u"
     const bech32: SerializedType = "bech32"
     const addressBuf: Buffer = serialization.typeToBuffer(address, bech32)
@@ -342,7 +342,7 @@ describe("Serialization", (): void => {
     const payload: Buffer = Buffer.from("From snowflake to Odyssey")
     const groupIDHex: string = "00003039"
     const payloadHex: string =
-      "46726f6d20736e6f77666c616b6520746f204176616c616e636865"
+      "46726f6d20736e6f77666c616b6520746f204f647973736579"
     const locktime: BN = new BN(0)
     const locktimeHex: string = "0000000000000000"
 

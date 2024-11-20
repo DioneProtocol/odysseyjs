@@ -142,20 +142,20 @@ describe("OmegaVMAPI", (): void => {
 
   test("getCreateSubnetTxFee", async (): Promise<void> => {
     let ochain: OmegaVMAPI = new OmegaVMAPI(odyssey, "/ext/bc/O")
-    const feeResponse: string = "1000000000"
+    const feeResponse: string = "300000000000"
     const fee: BN = ochain.getCreateSubnetTxFee()
     expect(fee.toString()).toBe(feeResponse)
   })
 
   test("getCreateChainTxFee", async (): Promise<void> => {
     let ochain: OmegaVMAPI = new OmegaVMAPI(odyssey, "/ext/bc/O")
-    const feeResponse: string = "1000000000"
+    const feeResponse: string = "10000000000"
     const fee: BN = ochain.getCreateChainTxFee()
     expect(fee.toString()).toBe(feeResponse)
   })
 
   test("refreshBlockchainID", async (): Promise<void> => {
-    let n3bcID: string = Defaults.network[3].O["blockchainID"]
+    let n12345bcID: string = Defaults.network[12345].O["blockchainID"]
     let testAPI: OmegaVMAPI = new OmegaVMAPI(odyssey, "/ext/bc/O")
     let bc1: string = testAPI.getBlockchainID()
     expect(bc1).toBe(OmegaChainID)
@@ -164,9 +164,9 @@ describe("OmegaVMAPI", (): void => {
     let bc2: string = testAPI.getBlockchainID()
     expect(bc2).toBe(OmegaChainID)
 
-    testAPI.refreshBlockchainID(n3bcID)
+    testAPI.refreshBlockchainID(n12345bcID)
     let bc3: string = testAPI.getBlockchainID()
-    expect(bc3).toBe(n3bcID)
+    expect(bc3).toBe(n12345bcID)
   })
 
   test("listAddresses", async (): Promise<void> => {

@@ -297,19 +297,19 @@ describe("ALPHAAPI", (): void => {
   })
 
   test("refreshBlockchainID", async (): Promise<void> => {
-    const n3bcID: string = Defaults.network[3].A["blockchainID"]
+    const n12345bcID: string = Defaults.network[12345].A["blockchainID"]
     const n1337bcID: string = Defaults.network[1337].A["blockchainID"]
-    const testAPI: ALPHAAPI = new ALPHAAPI(odyssey, "/ext/bc/alpha", n3bcID)
+    const testAPI: ALPHAAPI = new ALPHAAPI(odyssey, "/ext/bc/alpha", n12345bcID)
     const bc1: string = testAPI.getBlockchainID()
-    expect(bc1).toBe(n3bcID)
+    expect(bc1).toBe(n12345bcID)
 
     testAPI.refreshBlockchainID()
     const bc2: string = testAPI.getBlockchainID()
     expect(bc2).toBe(n1337bcID)
 
-    testAPI.refreshBlockchainID(n3bcID)
+    testAPI.refreshBlockchainID(n12345bcID)
     const bc3: string = testAPI.getBlockchainID()
-    expect(bc3).toBe(n3bcID)
+    expect(bc3).toBe(n12345bcID)
   })
 
   test("listAddresses", async (): Promise<void> => {
@@ -1143,7 +1143,7 @@ describe("ALPHAAPI", (): void => {
     })
 
     test("getDefaultMintTxFee", (): void => {
-      expect(alpha.getDefaultMintTxFee().toString()).toBe("1000000")
+      expect(alpha.getDefaultMintTxFee().toString()).toBe("5000000000")
     })
 
     test("signTx", async (): Promise<void> => {
@@ -1471,7 +1471,7 @@ describe("ALPHAAPI", (): void => {
         symbol,
         denomination,
         undefined,
-        CENTIDIONE,
+        ONEDIONE.mul(new BN(10)),
         assetID
       )
 
@@ -1594,7 +1594,7 @@ describe("ALPHAAPI", (): void => {
         addrs1.map((a) => alpha.parseAddress(a)),
         addrs2.map((a) => alpha.parseAddress(a)),
         secpMintUTXO.getUTXOID(),
-        MILLIDIONE,
+        ONEDIONE.mul(new BN(5)),
         assetID
       )
 

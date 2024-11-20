@@ -14,14 +14,14 @@ const bintools: BinTools = BinTools.getInstance()
 export class ProofOfPossession {
   protected _typeName = "ProofOfPossession"
   protected _typeID = undefined
-  protected publidKey: Buffer = Buffer.alloc(48)
+  protected publicKey: Buffer = Buffer.alloc(48)
   protected signature: Buffer = Buffer.alloc(96)
 
   /**
-   * Returns the {@link https://github.com/feross/buffer|Buffer} representation of the publidKey
+   * Returns the {@link https://github.com/feross/buffer|Buffer} representation of the publicKey
    */
-  getPublidKey(): Buffer {
-    return this.publidKey
+  getPublicKey(): Buffer {
+    return this.publicKey
   }
 
   /**
@@ -41,7 +41,7 @@ export class ProofOfPossession {
    * @remarks assume not-checksummed
    */
   fromBuffer(bytes: Buffer, offset: number = 0): number {
-    this.publidKey = bintools.copyFrom(bytes, offset, offset + 48)
+    this.publicKey = bintools.copyFrom(bytes, offset, offset + 48)
     offset += 48
 
     this.signature = bintools.copyFrom(bytes, offset, offset + 96)
@@ -54,9 +54,9 @@ export class ProofOfPossession {
    * Returns a {@link https://github.com/feross/buffer|Buffer} representation of the [[ProofOfPossession]]
    */
   toBuffer(): Buffer {
-    let bsize: number = this.publidKey.length + this.signature.length
+    let bsize: number = this.publicKey.length + this.signature.length
 
-    const barr: Buffer[] = [this.publidKey, this.signature]
+    const barr: Buffer[] = [this.publicKey, this.signature]
 
     return Buffer.concat(barr, bsize)
   }
@@ -64,11 +64,11 @@ export class ProofOfPossession {
   /**
    * Class representing a Proof of Possession
    *
-   * @param publidKey {@link https://github.com/feross/buffer|Buffer} for the public key
+   * @param publicKey {@link https://github.com/feross/buffer|Buffer} for the public key
    * @param signature {@link https://github.com/feross/buffer|Buffer} for the signature
    */
-  constructor(publidKey: Buffer = undefined, signature: Buffer = undefined) {
-    this.publidKey = publidKey
+  constructor(publicKey: Buffer = undefined, signature: Buffer = undefined) {
+    this.publicKey = publicKey
     this.signature = signature
   }
 }

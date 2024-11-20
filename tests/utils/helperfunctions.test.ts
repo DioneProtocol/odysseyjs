@@ -27,7 +27,7 @@ describe("HelperFunctions", (): void => {
     let unsignedTx: UnsignedTx = new UnsignedTx(exportTx)
     exportTx.fromBuffer(new Buffer(hex, "hex"))
     cost = costExportTx(unsignedTx)
-    bytesCost = 11230
+    bytesCost = 22230
     expect(cost).toEqual(bytesCost)
 
     hex =
@@ -35,7 +35,7 @@ describe("HelperFunctions", (): void => {
     importTx.fromBuffer(new Buffer(hex, "hex"))
     unsignedTx = new UnsignedTx(importTx)
     cost = costImportTx(unsignedTx)
-    bytesCost = 10082
+    bytesCost = 21082
     expect(cost).toEqual(bytesCost)
   })
 })

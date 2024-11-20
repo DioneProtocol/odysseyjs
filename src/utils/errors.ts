@@ -261,10 +261,10 @@ export class AddressIndexError extends OdysseyError {
   }
 }
 
-export class PublidKeyError extends OdysseyError {
+export class PublicKeyError extends OdysseyError {
   constructor(m: string) {
     super(m, PUBLIC_KEY_ERROR_CODE)
-    Object.setPrototypeOf(this, PublidKeyError.prototype)
+    Object.setPrototypeOf(this, PublicKeyError.prototype)
   }
 }
 

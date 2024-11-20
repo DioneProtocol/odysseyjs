@@ -14,7 +14,7 @@ const bintools: BinTools = BinTools.getInstance()
 
 export default class HDNode {
   private hdkey: any
-  publidKey: Buffer
+  publicKey: Buffer
   privateKey: Buffer
   privateKeyCB58: string
   chainCode: Buffer
@@ -83,7 +83,7 @@ export default class HDNode {
         Buffer.from(from) as unknown as globalThis.Buffer
       )
     }
-    this.publidKey = this.hdkey.publidKey
+    this.publicKey = this.hdkey.publicKey
     this.privateKey = this.hdkey.privateKey
     if (this.privateKey) {
       this.privateKeyCB58 = `PrivateKey-${bintools.cb58Encode(this.privateKey)}`

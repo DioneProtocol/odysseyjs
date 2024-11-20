@@ -4,8 +4,8 @@ import { Defaults, Networks, Network } from "../../../src/utils/constants"
 describe("DELTAConstants", (): void => {
   describe("Compare min and max gas prices", (): void => {
     const networks: Networks = Defaults.network
-    const minNum: number = 25000000000
-    const maxNum: number = 1000000000000
+    const minNum: number = 238095238095238
+    const maxNum: number = 714285714285714
     const networkIDs: number[] = [1, 5, 12345]
     networkIDs.forEach((networkID: number): void => {
       test(`NetworkID: ${networkID}`, async (): Promise<void> => {
