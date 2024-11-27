@@ -1,6 +1,6 @@
 {
-  "name": "@integralteam/odysseyjs",
-  "version": "3.17.0-alpha.2",
+  "name": "@dioneprotocol/odysseyjs",
+  "version": "1.0.0",
   "description": "Odyssey Platform JS Library",
   "main": "dist/index.js",
   "scripts": {
