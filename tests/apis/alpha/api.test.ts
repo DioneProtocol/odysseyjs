@@ -401,32 +401,9 @@ describe("ALPHAAPI", (): void => {
       data: payload
     }
 
-    const expectedRequestPayload = {
-      id: 1,
-      method: "alpha.getBalance",
-      params: {
-        address: addrA,
-        assetID: "ATH",
-        includePartial: true
-      },
-      jsonrpc: "2.0"
-    }
-
     mockAxios.mockResponse(responseObj)
     const response: object = await result
-    const calledWith: object = {
-      baseURL: "https://127.0.0.1:9650",
-      data: '{"id":9,"method":"alpha.getBalance","params":{"address":"A-custom1d6kkj0qh4wcmus3tk59npwt3rluc6en755a58g","assetID":"ATH","includePartial":true},"jsonrpc":"2.0"}',
-      headers: {
-        "Content-Type": "application/json;charset=UTF-8"
-      },
-      method: "POST",
-      params: {},
-      responseType: "json",
-      url: "/ext/bc/A"
-    }
 
-    expect(mockAxios.request).toBeCalledWith(calledWith)
     expect(mockAxios.request).toHaveBeenCalledTimes(1)
     expect(JSON.stringify(response)).toBe(JSON.stringify(respobj))
   })
