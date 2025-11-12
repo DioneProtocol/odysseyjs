@@ -13,7 +13,6 @@ import {
 } from "../../src/apis/alpha/interfaces"
 import { KeyChain as DELTAKeyChain, DELTAAPI } from "../../src/apis/delta"
 import {
-  DefaultLocalGenesisPrivateKey,
   Defaults,
   UnixNow
 } from "../../src/utils"
@@ -27,7 +26,7 @@ const achain: ALPHAAPI = odyssey.AChain()
 const dchain: DELTAAPI = odyssey.DChain()
 const aKeychain: ALPHAKeyChain = achain.keyChain()
 const dKeychain: DELTAKeyChain = dchain.keyChain()
-const key = ""
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
 const privKey: Buffer = new Buffer(key, "hex")
 aKeychain.importKey(privKey)
 dKeychain.importKey(privKey)

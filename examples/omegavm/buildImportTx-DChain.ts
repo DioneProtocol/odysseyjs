@@ -8,7 +8,6 @@ import {
   Tx
 } from "../../src/apis/omegavm"
 import {
-  DefaultLocalGenesisPrivateKey,
   Defaults,
   UnixNow
 } from "../../src//utils"
@@ -20,7 +19,7 @@ const networkID = Number(process.env.NETWORK_ID)
 const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const ochain: OmegaVMAPI = odyssey.OChain()
 const oKeychain: KeyChain = ochain.keyChain()
-const key = ""
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
 const privKey: Buffer = new Buffer(key, "hex")
 oKeychain.importKey(privKey)
 const oAddressStrings: string[] = ochain.keyChain().getAddressStrings()
@@ -34,26 +33,30 @@ const memo: Buffer = Buffer.from(
 const asOf: BN = UnixNow()
 
 const main = async (): Promise<any> => {
-  const omegaVMUTXOResponse: any = await ochain.getUTXOs(
-    oAddressStrings,
-    dChainBlockchainID
-  )
-  const utxoSet: UTXOSet = omegaVMUTXOResponse.utxos
-  const unsignedTx: UnsignedTx = await ochain.buildImportTx(
-    utxoSet,
-    oAddressStrings,
-    dChainBlockchainID,
-    oAddressStrings,
-    oAddressStrings,
-    oAddressStrings,
-    memo,
-    asOf,
-    locktime,
-    threshold
-  )
-  const tx: Tx = unsignedTx.sign(oKeychain)
-  const txid: string = await ochain.issueTx(tx)
-  console.log(`Success! TXID: ${txid}`)
+  try{
+      const omegaVMUTXOResponse: any = await ochain.getUTXOs(
+        oAddressStrings,
+        dChainBlockchainID
+      )
+      const utxoSet: UTXOSet = omegaVMUTXOResponse.utxos
+      const unsignedTx: UnsignedTx = await ochain.buildImportTx(
+        utxoSet,
+        oAddressStrings,
+        dChainBlockchainID,
+        oAddressStrings,
+        oAddressStrings,  
+        oAddressStrings,
+        memo,
+        asOf,
+        locktime,
+        threshold
+      )
+      const tx: Tx = unsignedTx.sign(oKeychain)
+      const txid: string = await ochain.issueTx(tx)
+      console.log(`Success! TXID: ${txid}`)
+  } catch (error) {
+      console.error(error)
+  }
 }
 
 main()

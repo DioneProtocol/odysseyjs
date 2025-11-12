@@ -13,7 +13,6 @@ import {
 } from "../../src/apis/alpha/interfaces"
 import { KeyChain as OmegaVMKeyChain, OmegaVMAPI } from "../../src/apis/omegavm"
 import {
-  DefaultLocalGenesisPrivateKey,
   Defaults,
   UnixNow
 } from "../../src/utils"
@@ -27,7 +26,7 @@ const achain: ALPHAAPI = odyssey.AChain()
 const ochain: OmegaVMAPI = odyssey.OChain()
 const aKeychain: ALPHAKeyChain = achain.keyChain()
 const oKeychain: OmegaVMKeyChain = ochain.keyChain()
-const key = ""
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
 const privKey: Buffer = new Buffer(key, "hex")
 aKeychain.importKey(privKey)
 oKeychain.importKey(privKey)

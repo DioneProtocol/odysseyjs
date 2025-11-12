@@ -8,7 +8,7 @@ import {
   Tx
 } from "../../src/apis/omegavm"
 import {
-  DefaultLocalGenesisPrivateKey,
+
   UnixNow
 } from "../../src/utils"
 
@@ -19,7 +19,8 @@ const networkID = Number(process.env.NETWORK_ID)
 const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const ochain: OmegaVMAPI = odyssey.OChain()
 const oKeychain: KeyChain = ochain.keyChain()
-const privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
+const privKey: Buffer = new Buffer(key, "hex")
 oKeychain.importKey(privKey)
 const oAddressStrings: string[] = ochain.keyChain().getAddressStrings()
 const threshold: number = 1
@@ -28,13 +29,13 @@ const memo: Buffer = Buffer.from(
   "OmegaVM utility method buildAddValidatorTx to add a validator to the primary subnet"
 )
 
-const reward = "O-dione18jma8ppw3nhx5r4ap8clazz0dps7rv5ulw7llh"
-const nodeID: string = "NodeID-DE8BWpgUtNkTXzjFArzS1nroouzBcXX8J"
+const reward = process.env.REWARD_ADDRESS || "your_reward_address_here"
+const nodeID: string = process.env.NODE_ID || "your_node_id_here"
 
 const asOf: BN = UnixNow()
 const startTime: BN = UnixNow().add(new BN(60 * 1))
-const endTime: BN = startTime.add(new BN(60 * 60 * 24))
-const delegationFee: number = 10
+const endTime: BN = startTime.add(new BN(60 * 60 * 24 * 365)) // 1 year
+const delegationFee: number = Number(process.env.DELEGATION_FEE) || 2 // Default 2% commission
 
 const main = async (): Promise<any> => {
   const stakeAmount: any = await ochain.getMinStake()

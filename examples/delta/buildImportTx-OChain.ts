@@ -1,5 +1,5 @@
 import "dotenv/config"
-import { Odyssey, BN } from "../../src"
+import { Odyssey, BN, Buffer } from "../../src"
 import { OmegaVMAPI, KeyChain as OmegaVMKeyChain } from "../../src/apis/omegavm"
 import {
   DELTAAPI,
@@ -9,7 +9,6 @@ import {
   UTXOSet
 } from "../../src/apis/delta"
 import {
-  DefaultLocalGenesisPrivateKey,
   Defaults,
   costImportTx
 } from "../../src/utils"
@@ -22,8 +21,9 @@ const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const ochain: OmegaVMAPI = odyssey.OChain()
 const dchain: DELTAAPI = odyssey.DChain()
 const oKeychain: OmegaVMKeyChain = ochain.keyChain()
-const dHexAddress: string = "0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC"
-const privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
+const dHexAddress: string = process.env.WALLET_ADDRESS || "your_wallet_address_here"
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
+const privKey: Buffer = new Buffer(key, "hex")
 const dKeychain: DELTAKeyChain = dchain.keyChain()
 oKeychain.importKey(privKey)
 dKeychain.importKey(privKey)

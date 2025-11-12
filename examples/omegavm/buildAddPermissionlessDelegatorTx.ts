@@ -8,7 +8,7 @@ import {
   Tx
 } from "../../src/apis/omegavm"
 import {
-  DefaultLocalGenesisPrivateKey,
+
   UnixNow
 } from "../../src/utils"
 
@@ -19,7 +19,7 @@ const networkID = Number(process.env.NETWORK_ID)
 const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const ochain: OmegaVMAPI = odyssey.OChain()
 const oKeychain: KeyChain = ochain.keyChain()
-const key = ""
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
 const privKey: Buffer = new Buffer(key, "hex")
 oKeychain.importKey(privKey)
 const oAddressStrings: string[] = ochain.keyChain().getAddressStrings()

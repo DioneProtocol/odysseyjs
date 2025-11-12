@@ -13,7 +13,6 @@ import {
 } from "../../src/apis/alpha/interfaces"
 import { Defaults } from "../../src/utils"
 import {
-  DefaultLocalGenesisPrivateKey,
   UnixNow
 } from "../../src/utils"
 
@@ -22,7 +21,7 @@ const port = Number(process.env.PORT)
 const protocol = process.env.PROTOCOL
 const networkID = Number(process.env.NETWORK_ID)
 const aBlockchainID: string = Defaults.network[networkID].A.blockchainID
-const dioneAssetID: string = Defaults.network[networkID].A.dioneAssetID
+const dioneAssetID: string = Defaults.network[networkID].A.dioneAssetID || "your_dione_asset_id_here"
 const odyssey: Odyssey = new Odyssey(
   ip,
   port,
@@ -32,7 +31,8 @@ const odyssey: Odyssey = new Odyssey(
 )
 const achain: ALPHAAPI = odyssey.AChain()
 const aKeychain: KeyChain = achain.keyChain()
-const privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
+const privKey: Buffer = new Buffer(key, "hex")
 aKeychain.importKey(privKey)
 const aAddressStrings: string[] = achain.keyChain().getAddressStrings()
 const asOf: BN = UnixNow()

@@ -9,7 +9,7 @@ import {
 } from "../../src/apis/omegavm"
 import { GetUTXOsResponse } from "../../src/apis/omegavm/interfaces"
 import {
-  DefaultLocalGenesisPrivateKey,
+
   UnixNow
 } from "../../src/utils"
 
@@ -22,7 +22,8 @@ const ochain: OmegaVMAPI = odyssey.OChain()
 // Keychain with 4 keys-A, B, D, and D
 const oKeychain: KeyChain = ochain.keyChain()
 // Keypair A
-let privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
+let privKey: Buffer = new Buffer(key, "hex")
 oKeychain.importKey(privKey)
 
 // Keypair B

@@ -9,7 +9,6 @@ import {
 } from "../../src/apis/alpha"
 import { GetUTXOsResponse } from "../../src/apis/alpha/interfaces"
 import {
-  DefaultLocalGenesisPrivateKey,
   Defaults,
   UnixNow
 } from "../../src/utils"
@@ -21,7 +20,7 @@ const networkID = Number(process.env.NETWORK_ID)
 const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const achain: ALPHAAPI = odyssey.AChain()
 const aKeychain: KeyChain = achain.keyChain()
-const key = ""
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
 const privKey: Buffer = new Buffer(key, "hex")
 aKeychain.importKey(privKey)
 const aAddressStrings: string[] = achain.keyChain().getAddressStrings()
