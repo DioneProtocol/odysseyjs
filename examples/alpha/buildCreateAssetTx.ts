@@ -11,9 +11,6 @@ import {
   SECPTransferOutput
 } from "../../src/apis/alpha"
 import { GetUTXOsResponse } from "../../src/apis/alpha/interfaces"
-import {
-  DefaultLocalGenesisPrivateKey
-} from "../../src/utils"
 
 const ip = process.env.IP
 const port = Number(process.env.PORT)
@@ -22,7 +19,8 @@ const networkID = Number(process.env.NETWORK_ID)
 const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const achain: ALPHAAPI = odyssey.AChain()
 const aKeychain: KeyChain = achain.keyChain()
-const privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
+const privKey: Buffer = new Buffer(key, "hex")
 aKeychain.importKey(privKey)
 const aAddresses: Buffer[] = achain.keyChain().getAddresses()
 const aAddressStrings: string[] = achain.keyChain().getAddressStrings()
@@ -42,7 +40,7 @@ const main = async (): Promise<any> => {
   )
   const utxoSet: UTXOSet = alphaUTXOResponse.utxos
 
-  const amount: BN = new BN(507)
+  const amount: BN = new BN(process.env.AMOUNT || "507")
   const vcapSecpOutput = new SECPTransferOutput(
     amount,
     aAddresses,

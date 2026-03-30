@@ -9,9 +9,6 @@ import {
   Tx
 } from "../../src/apis/alpha"
 import { UnixNow } from "../../src/utils"
-import {
-  DefaultLocalGenesisPrivateKey
-} from "../../src/utils"
 
 const ip = process.env.IP
 const port = Number(process.env.PORT)
@@ -20,7 +17,9 @@ const networkID = Number(process.env.NETWORK_ID)
 const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const achain: ALPHAAPI = odyssey.AChain()
 const aKeychain: KeyChain = achain.keyChain()
-const privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex");
+const amount = process.env.AMOUNT || "5"
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
+const privKey: Buffer = new Buffer(key, "hex");
 aKeychain.importKey(privKey)
 const aAddressStrings: string[] = achain.keyChain().getAddressStrings()
 const asOf: BN = UnixNow()
@@ -31,7 +30,6 @@ const memo: Buffer = Buffer.from(
 )
 
 const main = async (): Promise<any> => {
-  const amount: BN = new BN(5)
   const alphaUTXOResponse: GetUTXOsResponse = await achain.getUTXOs(
     aAddressStrings
   )
@@ -41,7 +39,7 @@ const main = async (): Promise<any> => {
 
   const unsignedTx: UnsignedTx = await achain.buildBaseTx(
     utxoSet,
-    amount,
+    new BN(amount),
     assetID,
     toAddresses,
     aAddressStrings,

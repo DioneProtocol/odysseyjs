@@ -10,7 +10,7 @@ const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const info: InfoAPI = odyssey.Info()
 
 const main = async (): Promise<any> => {
-  const alias: string = "A"
+  const alias: string = process.env.ALIAS || "A"
   const blockchainID: string = await info.getBlockchainID(alias)
   console.log(blockchainID)
 }

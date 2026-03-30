@@ -10,7 +10,7 @@ const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const achain: ALPHAAPI = odyssey.AChain()
 
 const main = async (): Promise<any> => {
-  const txID: string = "Cgse9mcZeXrYsBGrF3SqjoDHoqxauiwxm6zrgkDa5kxSa5K85"
+  const txID: string = process.env.TX_ID || "Cgse9mcZeXrYsBGrF3SqjoDHoqxauiwxm6zrgkDa5kxSa5K85"
   const encoding: string = "json"
   const tx: string | object = await achain.getTx(txID, encoding)
   console.log(tx)

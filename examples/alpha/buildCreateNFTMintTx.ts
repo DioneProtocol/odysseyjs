@@ -12,7 +12,6 @@ import {
 import { GetUTXOsResponse } from "../../src/apis/alpha/interfaces"
 import { OutputOwners } from "../../src/common"
 import {
-  DefaultLocalGenesisPrivateKey,
   UnixNow
 } from "../../src/utils"
 
@@ -23,7 +22,7 @@ const getUTXOIDs = (
   utxoSet: UTXOSet,
   txid: string,
   outputType: number = ALPHAConstants.SECPXFEROUTPUTID_CODECONE,
-  assetID = "2fSX8P4vhGNZsD3WELwwTxx4XzCNwicyFiYbp3Q965BMgJ8g9"
+  assetID = process.env.ASSET_ID || "2fSX8P4vhGNZsD3WELwwTxx4XzCNwicyFiYbp3Q965BMgJ8g9"
 ): string[] => {
   const utxoids: string[] = utxoSet.getUTXOIDs()
   let result: string[] = []
@@ -48,7 +47,8 @@ const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const achain: ALPHAAPI = odyssey.AChain()
 const bintools: BinTools = BinTools.getInstance()
 const aKeychain: KeyChain = achain.keyChain()
-const privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
+const privKey: Buffer = new Buffer(key, "hex")
 aKeychain.importKey(privKey)
 const aAddresses: Buffer[] = achain.keyChain().getAddresses()
 const aAddressStrings: string[] = achain.keyChain().getAddressStrings()

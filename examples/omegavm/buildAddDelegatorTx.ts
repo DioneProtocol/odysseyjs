@@ -8,7 +8,7 @@ import {
   Tx
 } from "../../src/apis/omegavm"
 import {
-  DefaultLocalGenesisPrivateKey,
+
   UnixNow
 } from "../../src/utils"
 
@@ -19,7 +19,7 @@ const networkID = Number(process.env.NETWORK_ID)
 const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const ochain: OmegaVMAPI = odyssey.OChain()
 const oKeychain: KeyChain = ochain.keyChain()
-const key = ""
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
 const privKey: Buffer = new Buffer(key, "hex")
 oKeychain.importKey(privKey)
 const oAddressStrings: string[] = ochain.keyChain().getAddressStrings()
@@ -29,9 +29,9 @@ const memo: Buffer = Buffer.from(
   "OmegaVM utility method buildAddDelegatorTx to add a delegator to the primary subnet"
 )
 const asOf: BN = UnixNow()
-const nodeID: string = "NodeID-Ph5sCgzC7nqaZQm7LKSzMMdRzLpaWVSuu"
-const startTime: BN = UnixNow().add(new BN(60 * 1))
-const endTime: BN = startTime.add(new BN(60))
+const nodeID: string = process.env.NODE_ID || "NodeID-Ph5sCgzC7nqaZQm7LKSzMMdRzLpaWVSuu"
+const startTime: BN = UnixNow().add(new BN(process.env.START_TIME || 60 * 1))
+const endTime: BN = startTime.add(new BN(process.env.END_TIME || 60))
 
 const main = async (): Promise<any> => {
   const stakeAmount: any = await ochain.getMinStake()

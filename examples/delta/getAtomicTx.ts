@@ -10,7 +10,7 @@ const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const dchain: DELTAAPI = odyssey.DChain()
 
 const main = async (): Promise<any> => {
-  const txID: string = "2GD5SRYJQr2kw5jE73trBFiAgVQyrCaeg223TaTyJFYXf2kPty"
+  const txID: string = process.env.TX_ID || "2GD5SRYJQr2kw5jE73trBFiAgVQyrCaeg223TaTyJFYXf2kPty"
   const status: string = await dchain.getAtomicTx(txID)
   console.log(status)
 }

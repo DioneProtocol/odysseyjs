@@ -8,7 +8,7 @@ import {
   Tx
 } from "../../src/apis/omegavm"
 import {
-  DefaultLocalGenesisPrivateKey,
+
   UnixNow
 } from "../../src/utils"
 
@@ -25,19 +25,20 @@ const ochain: OmegaVMAPI = odyssey.OChain()
 // Keychain with 4 keys-A, B, D, and D
 const oKeychain: KeyChain = ochain.keyChain()
 // Keypair A
-let privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
+let privKey: Buffer = new Buffer(key, "hex")
 oKeychain.importKey(privKey)
 
 // Keypair B
-privKey = new Buffer("ab8523913b9963530eb05584dfe85fb63c2516a2b5b7c3aec9d000d716fb1534", "hex")
+privKey = new Buffer(process.env.PRIVATE_KEY_B || "your_private_key_b_here", "hex")
 oKeychain.importKey(privKey)
 
 // Keypair C
-privKey = new Buffer("df3eb4d997116f9059dcac0a919431e5f38679f1953cb070516aece6f055034a", "hex")
+privKey = new Buffer(process.env.PRIVATE_KEY_C || "your_private_key_c_here", "hex")
 oKeychain.importKey(privKey)
 
 // Keypair D
-privKey = new Buffer("fbb5cb9faccdaee01a44495be987eecbce6a62bd2342686940d2272399240b94", "hex")
+privKey = new Buffer(process.env.PRIVATE_KEY_D || "your_private_key_d_here", "hex")
 oKeychain.importKey(privKey)
 const oAddressStrings: string[] = ochain.keyChain().getAddressStrings()
 const oAddresses: Buffer[] = ochain.keyChain().getAddresses()
@@ -48,15 +49,15 @@ const main = async (): Promise<any> => {
   const utxoSet: UTXOSet = omegaVMUTXOResponse.utxos
 
   const genesisDataStr: string =
-    "11111DdZMhYXUZiFV9FNpfpTSQroysjHyMuT5zapYkPYrmap7t7S3sDNNwFzngxR9x1XmoRj5JK1XomX8RHvXYY5h3qYeEsMQRF8Ypia7p1CFHDo6KGSjMdiQkrmpvL8AvoezSxVWKXt2ubmBCnSkpPjnQbBSF7gNg4sPu1PXdh1eKgthaSFREqqG5FKMrWNiS6U87kxCmbKjkmBvwnAd6TpNx75YEiS9YKMyHaBZjkRDNf6Nj1"
+    process.env.GENESIS_DATA || "11111DdZMhYXUZiFV9FNpfpTSQroysjHyMuT5zapYkPYrmap7t7S3sDNNwFzngxR9x1XmoRj5JK1XomX8RHvXYY5h3qYeEsMQRF8Ypia7p1CFHDo6KGSjMdiQkrmpvL8AvoezSxVWKXt2ubmBCnSkpPjnQbBSF7gNg4sPu1PXdh1eKgthaSFREqqG5FKMrWNiS6U87kxCmbKjkmBvwnAd6TpNx75YEiS9YKMyHaBZjkRDNf6Nj1"
   const subnetIDStr: string =
-    "2cXEvbdDaP6q6srB6x1T14raebpJaM4s2t9NE5kiXzLqLXQDWm"
+    process.env.SUBNET_ID || "2cXEvbdDaP6q6srB6x1T14raebpJaM4s2t9NE5kiXzLqLXQDWm"
   const memo: Buffer = Buffer.from(
     "Utility function to create a CreateChainTx transaction"
   )
   const subnetID: Buffer = bintools.cb58Decode(subnetIDStr)
-  const chainName: string = "EPIC ALPHA"
-  const vmID: string = "alpha"
+  const chainName: string = process.env.CHAIN_NAME || "EPIC ALPHA"
+  const vmID: string = process.env.VM_ID || "alpha"
   const fxIDs: string[] = ["secp256k1fx", "nftfx", "propertyfx"]
 
   // Only for ALPHA serialization. For other VMs comment these 2 lines

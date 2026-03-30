@@ -1,6 +1,5 @@
 import "dotenv/config"
-import { Odyssey, BN } from "../../src"
-import { Web3 } from "web3"
+import { Odyssey, BN, Buffer } from "../../src"
 import { ALPHAAPI, KeyChain as ALPHAKeyChain } from "../../src/apis/alpha"
 import {
   DELTAAPI,
@@ -9,10 +8,10 @@ import {
   Tx
 } from "../../src/apis/delta"
 import {
-  DefaultLocalGenesisPrivateKey,
   Defaults,
   costExportTx
 } from "../../src/utils"
+import { Web3 } from "web3"
 
 const ip = process.env.IP
 const port = Number(process.env.PORT)
@@ -21,7 +20,8 @@ const networkID = Number(process.env.NETWORK_ID)
 const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const achain: ALPHAAPI = odyssey.AChain()
 const dchain: DELTAAPI = odyssey.DChain()
-const privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
+const privKey = new Buffer(key, "hex")
 const aKeychain: ALPHAKeyChain = achain.keyChain()
 const dKeychain: DELTAKeyChain = dchain.keyChain()
 aKeychain.importKey(privKey)
@@ -29,22 +29,19 @@ dKeychain.importKey(privKey)
 const aAddressStrings: string[] = achain.keyChain().getAddressStrings()
 const dAddressStrings: string[] = dchain.keyChain().getAddressStrings()
 const aChainBlockchainIdStr: string = Defaults.network[networkID].A.blockchainID
-const dioneAssetID: string = Defaults.network[networkID].A.dioneAssetID
-const dHexAddress: string = "0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC"
-const Web3 = require("web3")
+const dioneAssetID: string = Defaults.network[networkID].A.dioneAssetID || "your_dione_asset_id_here"
+const dHexAddress: string = process.env.WALLET_ADDRESS || "your_wallet_address_here"
 const path: string = "/ext/bc/D/rpc"
 const web3 = new Web3(`${protocol}://${ip}:${port}${path}`)
 const threshold: number = 1
 
 const main = async (): Promise<any> => {
-  let balance: BN = await web3.eth.getBalance(dHexAddress)
-  balance = new BN(balance.toString().substring(0, 17))
   const baseFeeResponse: string = await dchain.getBaseFee()
   const baseFee = new BN(parseInt(baseFeeResponse, 16))
   const txcount = await web3.eth.getTransactionCount(dHexAddress)
-  const nonce: number = txcount
+  const nonce: number = Number(txcount)
   const locktime: BN = new BN(0)
-  let dioneAmount: BN = new BN(1e11)
+  let dioneAmount: BN = new BN(process.env.AMOUNT || "1000000000000")
   let fee: BN = baseFee
 
   let unsignedTx: UnsignedTx = await dchain.buildExportTx(

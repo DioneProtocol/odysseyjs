@@ -11,7 +11,7 @@ const ochain: OmegaVMAPI = odyssey.OChain()
 
 const main = async (): Promise<any> => {
   const blockchainID: string =
-    "2AymB4Mb6mErFNsDB8aWb77Ui8oyogXgDyRe9RVQBtqfXzKoUc"
+    process.env.BLOCKCHAIN_ID || "2AymB4Mb6mErFNsDB8aWb77Ui8oyogXgDyRe9RVQBtqfXzKoUc"
   const blockchainStatus: string = await ochain.getBlockchainStatus(
     blockchainID
   )

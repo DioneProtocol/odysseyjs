@@ -9,7 +9,6 @@ import {
   UTXOSet
 } from "../../src/apis/delta"
 import {
-  DefaultLocalGenesisPrivateKey,
   Defaults,
   costImportTx
 } from "../../src/utils"
@@ -22,8 +21,8 @@ const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const achain: ALPHAAPI = odyssey.AChain()
 const dchain: DELTAAPI = odyssey.DChain()
 const aKeychain: ALPHAKeyChain = achain.keyChain()
-const dHexAddress: string = "0x3B90Beea0B5a93EF3cAD0244DC6be0c1aA0Ece5A"
-const key = ""
+const dHexAddress: string = process.env.WALLET_ADDRESS || "your_wallet_address_here"
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
 const privKey: Buffer = new Buffer(key, "hex")
 const dKeychain: DELTAKeyChain = dchain.keyChain()
 aKeychain.importKey(privKey)

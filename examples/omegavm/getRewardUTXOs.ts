@@ -11,7 +11,7 @@ const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const ochain: OmegaVMAPI = odyssey.OChain()
 
 const main = async (): Promise<any> => {
-  const txID: string = "2nmH8LithVbdjaXsxVQCQfXtzN9hBbmebrsaEYnLM9T32Uy2Y4"
+  const txID: string = process.env.TX_ID || "2nmH8LithVbdjaXsxVQCQfXtzN9hBbmebrsaEYnLM9T32Uy2Y4"
   const encoding: string = "hex"
   const rewardUTXOs: GetRewardUTXOsResponse = await ochain.getRewardUTXOs(
     txID,

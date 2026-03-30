@@ -9,7 +9,6 @@ import {
   Tx
 } from "../../src/apis/omegavm"
 import {
-  DefaultLocalGenesisPrivateKey,
   Defaults,
   UnixNow
 } from "../../src/utils"
@@ -23,7 +22,7 @@ const achain: ALPHAAPI = odyssey.AChain()
 const ochain: OmegaVMAPI = odyssey.OChain()
 const aKeychain: ALPHAKeyChain = achain.keyChain()
 const oKeychain: KeyChain = ochain.keyChain()
-const key = ""
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
 const privKey: Buffer = new Buffer(key, "hex")
 aKeychain.importKey(privKey)
 oKeychain.importKey(privKey)
@@ -39,15 +38,12 @@ const memo: Buffer = Buffer.from(
 const asOf: BN = UnixNow()
 
 const main = async (): Promise<any> => {
-  const getBalanceResponse: any = await ochain.getBalance(oAddressStrings)
-  // const unlocked: BN = new BN(getBalanceResponse.unlocked)
-  const unlocked: BN = new BN(100000000000)
+  const unlocked: BN = new BN(process.env.AMOUNT || "100000000000")
   const omegaVMUTXOResponse: any = await ochain.getUTXOs(oAddressStrings)
   const utxoSet: UTXOSet = omegaVMUTXOResponse.utxos
-  console.log(unlocked.toString())
   const unsignedTx: UnsignedTx = await ochain.buildExportTx(
     utxoSet,
-    new BN(1000),
+    unlocked,
     aChainBlockchainID,
     aAddressStrings,
     oAddressStrings,

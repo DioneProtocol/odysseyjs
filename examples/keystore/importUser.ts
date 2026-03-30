@@ -20,8 +20,8 @@ const main = async (): Promise<any> => {
   const cb = async (err: any, data: any): Promise<void> => {
     if (err) throw err
     const jsonData: any = JSON.parse(data)
-    const username: string = "username"
-    const password: string = jsonData.password
+    const username: string = process.env.USERNAME || "username"
+    const password: string = process.env.PASSWORD || jsonData.password
     const user: string = jsonData.user
     const successful: boolean = await keystore.importUser(
       username,

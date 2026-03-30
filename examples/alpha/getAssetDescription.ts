@@ -10,7 +10,7 @@ const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const achain: ALPHAAPI = odyssey.AChain()
 
 const main = async (): Promise<any> => {
-  const assetDescription: any = await achain.getAssetDescription("DIONE")
+  const assetDescription: any = await achain.getAssetDescription(process.env.ASSET_ID || "DIONE")
   console.log(assetDescription)
 }
 

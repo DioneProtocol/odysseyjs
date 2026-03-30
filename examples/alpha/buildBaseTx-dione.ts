@@ -13,7 +13,6 @@ import {
 } from "../../src/apis/alpha/interfaces"
 import { Defaults } from "../../src/utils"
 import {
-  DefaultLocalGenesisPrivateKey,
   UnixNow
 } from "../../src/utils"
 
@@ -22,7 +21,7 @@ const port = Number(process.env.PORT)
 const protocol = process.env.PROTOCOL
 const networkID = Number(process.env.NETWORK_ID)
 const aBlockchainID: string = Defaults.network[networkID].A.blockchainID
-const dioneAssetID: string = Defaults.network[networkID].A.dioneAssetID
+const dioneAssetID: string = Defaults.network[networkID].A.dioneAssetID || "your_dione_asset_id_here"
 const odyssey: Odyssey = new Odyssey(
   ip,
   port,
@@ -32,7 +31,10 @@ const odyssey: Odyssey = new Odyssey(
 )
 const achain: ALPHAAPI = odyssey.AChain()
 const aKeychain: KeyChain = achain.keyChain()
-const privKey: Buffer = new Buffer(DefaultLocalGenesisPrivateKey, "hex")
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
+const toAddresses: string[] = process.env.TO_ADDRESSES?.split(",") || []
+const amount = process.env.AMOUNT || "50000000000"
+const privKey: Buffer = new Buffer(key, "hex")
 aKeychain.importKey(privKey)
 const aAddressStrings: string[] = achain.keyChain().getAddressStrings()
 const asOf: BN = UnixNow()
@@ -56,14 +58,10 @@ const main = async (): Promise<any> => {
   // const amount: BN = balance.sub(fee)
   console.log(balance.toString())
   console.log(fee.toString())
-  const amount: BN = new BN(50000000000)
-  const toAddresses: [string] = [
-    "A-testnet1zgjm3xv0qy62tevqztz86qyz78q7cl0e38zkaw"
-  ]
 
   const unsignedTx: UnsignedTx = await achain.buildBaseTx(
     utxoSet,
-    amount,
+    new BN(amount),
     dioneAssetID,
     toAddresses,
     aAddressStrings,

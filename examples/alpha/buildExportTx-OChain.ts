@@ -13,7 +13,6 @@ import {
 } from "../../src/apis/alpha/interfaces"
 import { KeyChain as OmegaVMKeyChain, OmegaVMAPI } from "../../src/apis/omegavm"
 import {
-  DefaultLocalGenesisPrivateKey,
   Defaults,
   UnixNow
 } from "../../src/utils"
@@ -27,14 +26,14 @@ const achain: ALPHAAPI = odyssey.AChain()
 const ochain: OmegaVMAPI = odyssey.OChain()
 const aKeychain: ALPHAKeyChain = achain.keyChain()
 const oKeychain: OmegaVMKeyChain = ochain.keyChain()
-const key = ""
+const key = process.env.PRIVATE_KEY || "your_private_key_here"
 const privKey: Buffer = new Buffer(key, "hex")
 aKeychain.importKey(privKey)
 oKeychain.importKey(privKey)
 const aAddressStrings: string[] = achain.keyChain().getAddressStrings()
 const oAddressStrings: string[] = ochain.keyChain().getAddressStrings()
 const oChainBlockchainID: string = Defaults.network[networkID].O.blockchainID
-const dioneAssetID: string = Defaults.network[networkID].A.dioneAssetID
+const dioneAssetID: string = Defaults.network[networkID].A.dioneAssetID || "your_dione_asset_id_here"
 const locktime: BN = new BN(0)
 const asOf: BN = UnixNow()
 const memo: Buffer = Buffer.from(
@@ -53,7 +52,7 @@ const main = async (): Promise<any> => {
   )
   const balance: BN = new BN(getBalanceResponse.balance)
   // const amount: BN = balance.sub(fee)
-  const amount: BN = new BN(100000000000)
+  const amount: BN = new BN(process.env.AMOUNT || "100000000000")
 
   const unsignedTx: UnsignedTx = await achain.buildExportTx(
     utxoSet,
