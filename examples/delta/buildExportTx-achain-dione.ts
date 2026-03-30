@@ -41,7 +41,7 @@ const main = async (): Promise<any> => {
   const txcount = await web3.eth.getTransactionCount(dHexAddress)
   const nonce: number = Number(txcount)
   const locktime: BN = new BN(0)
-  let dioneAmount: BN = new BN(1e11)
+  let dioneAmount: BN = new BN(process.env.AMOUNT || "1000000000000")
   let fee: BN = baseFee
 
   let unsignedTx: UnsignedTx = await dchain.buildExportTx(

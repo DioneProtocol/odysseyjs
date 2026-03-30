@@ -33,7 +33,7 @@ dKeychain.importKey(privKey)
 const aAddressStrings: string[] = achain.keyChain().getAddressStrings()
 const dAddressStrings: string[] = dchain.keyChain().getAddressStrings()
 const dChainBlockchainID: string = Defaults.network[networkID].D.blockchainID
-const dioneAssetID: string = Defaults.network[networkID].A.dioneAssetID
+const dioneAssetID: string = Defaults.network[networkID].A.dioneAssetID || "your_dione_asset_id_here"
 const locktime: BN = new BN(0)
 const asOf: BN = UnixNow()
 const memo: Buffer = Buffer.from(
@@ -52,7 +52,7 @@ const main = async (): Promise<any> => {
   )
   const balance: BN = new BN(getBalanceResponse.balance)
   // const amount: BN = balance.sub(fee)
-  const amount: BN = new BN(1000000000000)
+  const amount: BN = new BN(process.env.AMOUNT || "1000000000000")
 
   const unsignedTx: UnsignedTx = await achain.buildExportTx(
     utxoSet,

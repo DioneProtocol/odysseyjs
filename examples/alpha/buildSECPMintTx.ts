@@ -25,7 +25,7 @@ const getUTXOIDs = (
   utxoSet: UTXOSet,
   txid: string,
   outputType: number = ALPHAConstants.SECPXFEROUTPUTID_CODECONE,
-  assetID = "Ycg5QzddNwe3ebfFXhoGUDnWgC6GE88QRakRnn9dp3nGwqCwD"
+  assetID = process.env.ASSET_ID || "Ycg5QzddNwe3ebfFXhoGUDnWgC6GE88QRakRnn9dp3nGwqCwD"
 ): string[] => {
   const utxoids: string[] = utxoSet.getUTXOIDs()
   let result: string[] = []

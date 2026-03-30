@@ -11,7 +11,7 @@ const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const index: IndexAPI = odyssey.Index()
 
 const main = async (): Promise<any> => {
-  const id: string = "eLXEKFFMgGmK7ZLokCFjppdBfGy5hDuRqh5uJVyXXPaRErpAX"
+  const id: string = process.env.ID || "eLXEKFFMgGmK7ZLokCFjppdBfGy5hDuRqh5uJVyXXPaRErpAX"
   const encoding: string = "hex"
   const baseurl: string = "/ext/index/A/tx"
   const containerByIndex: GetContainerByIDResponse =

@@ -29,10 +29,10 @@ const memo: Buffer = Buffer.from(
   "OmegaVM utility method buildAddPermissionlessDelegatorTx to add a delegator to the subnet"
 )
 const asOf: BN = UnixNow()
-const nodeID: string = "NodeID-7sECFXYT5k6VR4LzHRhFbqWdPcSBnXfK3"
-const subnetID: string = "2ivEh5xHybHhusC2ZzXY7EY99SuR8s2Vet7qwuTsazvnj2VXg2"
-const startTime: BN = UnixNow().add(new BN(60 * 1))
-const endTime: BN = startTime.add(new BN(150))
+const nodeID: string = process.env.NODE_ID || "NodeID-7sECFXYT5k6VR4LzHRhFbqWdPcSBnXfK3"
+const subnetID: string = process.env.SUBNET_ID || "2ivEh5xHybHhusC2ZzXY7EY99SuR8s2Vet7qwuTsazvnj2VXg2"
+const startTime: BN = UnixNow().add(new BN(process.env.START_TIME || 60 * 1))
+const endTime: BN = startTime.add(new BN(process.env.END_TIME || 150))
 
 const main = async (): Promise<any> => {
   const stakeAmount: any = await ochain.getMinStake()

@@ -10,8 +10,8 @@ const odyssey: Odyssey = new Odyssey(ip, port, protocol, networkID)
 const achain: ALPHAAPI = odyssey.AChain()
 
 const main = async (): Promise<any> => {
-  const address: string = "A-dione19zfygxaf59stehzedhxjesads0p5jdvfeedal0"
-  const balance: object = await achain.getBalance(address, "DIONE")
+  const address: string = process.env.ADDRESS || "A-dione19zfygxaf59stehzedhxjesads0p5jdvfeedal0"
+  const balance: object = await achain.getBalance(address, process.env.ASSET_ID || "DIONE")
   console.log(balance)
 }
 

@@ -12,7 +12,7 @@ const dchain: DELTAAPI = odyssey.DChain()
 const main = async (): Promise<any> => {
   const address: string = process.env.WALLET_ADDRESS || "your_wallet_address_here"
   const blockHeight: string = "latest"
-  const assetID: string = "8eqonZUiJZ655TLQdhFDCqY8oV4SPDMPzqfoVMVsSNE4wSMWu"
+  const assetID: string = process.env.ASSET_ID || "8eqonZUiJZ655TLQdhFDCqY8oV4SPDMPzqfoVMVsSNE4wSMWu"
   const balance: object = await dchain.getAssetBalance(
     address,
     blockHeight,

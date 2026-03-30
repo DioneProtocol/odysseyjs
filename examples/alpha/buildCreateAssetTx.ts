@@ -40,7 +40,7 @@ const main = async (): Promise<any> => {
   )
   const utxoSet: UTXOSet = alphaUTXOResponse.utxos
 
-  const amount: BN = new BN(507)
+  const amount: BN = new BN(process.env.AMOUNT || "507")
   const vcapSecpOutput = new SECPTransferOutput(
     amount,
     aAddresses,

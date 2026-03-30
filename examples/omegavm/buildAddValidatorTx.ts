@@ -33,8 +33,8 @@ const reward = process.env.REWARD_ADDRESS || "your_reward_address_here"
 const nodeID: string = process.env.NODE_ID || "your_node_id_here"
 
 const asOf: BN = UnixNow()
-const startTime: BN = UnixNow().add(new BN(60 * 1))
-const endTime: BN = startTime.add(new BN(60 * 60 * 24 * 365)) // 1 year
+const startTime: BN = UnixNow().add(new BN(process.env.START_TIME || 60 * 1))
+const endTime: BN = startTime.add(new BN(process.env.END_TIME || 60 * 60 * 24 * 365)) // 1 year
 const delegationFee: number = Number(process.env.DELEGATION_FEE) || 2 // Default 2% commission
 
 const main = async (): Promise<any> => {

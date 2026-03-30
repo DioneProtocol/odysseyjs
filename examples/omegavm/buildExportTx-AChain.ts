@@ -38,15 +38,12 @@ const memo: Buffer = Buffer.from(
 const asOf: BN = UnixNow()
 
 const main = async (): Promise<any> => {
-  const getBalanceResponse: any = await ochain.getBalance(oAddressStrings)
-  // const unlocked: BN = new BN(getBalanceResponse.unlocked)
-  const unlocked: BN = new BN(100000000000)
+  const unlocked: BN = new BN(process.env.AMOUNT || "100000000000")
   const omegaVMUTXOResponse: any = await ochain.getUTXOs(oAddressStrings)
   const utxoSet: UTXOSet = omegaVMUTXOResponse.utxos
-  console.log(unlocked.toString())
   const unsignedTx: UnsignedTx = await ochain.buildExportTx(
     utxoSet,
-    new BN(1000),
+    unlocked,
     aChainBlockchainID,
     aAddressStrings,
     oAddressStrings,

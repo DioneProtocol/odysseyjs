@@ -11,7 +11,7 @@ const achain: ALPHAAPI = odyssey.AChain()
 
 const main = async (): Promise<any> => {
   const status: string = await achain.getTxStatus(
-    "2MSJdxJ64sVLQ9GUatyzjCjazrgVMCYbD1zxFHPseqY5r8Hrdp"
+    process.env.TX_ID || "2MSJdxJ64sVLQ9GUatyzjCjazrgVMCYbD1zxFHPseqY5r8Hrdp"
   )
   console.log(status)
 }

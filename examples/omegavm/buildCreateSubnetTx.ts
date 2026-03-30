@@ -27,15 +27,15 @@ const privKey1: Buffer = new Buffer(key, "hex")
 oKeychain.importKey(privKey1)
 
 // Keypair B
-let privKey = new Buffer("ab8523913b9963530eb05584dfe85fb63c2516a2b5b7c3aec9d000d716fb1534", "hex")
+let privKey = new Buffer(process.env.PRIVATE_KEY_B || "your_private_key_b_here", "hex")
 oKeychain.importKey(privKey)
 
 // Keypair C
-privKey = new Buffer("df3eb4d997116f9059dcac0a919431e5f38679f1953cb070516aece6f055034a", "hex")
+privKey = new Buffer(process.env.PRIVATE_KEY_C || "your_private_key_c_here", "hex")
 oKeychain.importKey(privKey)
 
 // Keypair D
-privKey = new Buffer("fbb5cb9faccdaee01a44495be987eecbce6a62bd2342686940d2272399240b94", "hex")
+privKey = new Buffer(process.env.PRIVATE_KEY_D || "your_private_key_d_here", "hex")
 oKeychain.importKey(privKey)
 const oAddressStrings: string[] = ochain.keyChain().getAddressStrings()
 const threshold: number = 2
